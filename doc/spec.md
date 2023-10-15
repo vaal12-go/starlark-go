@@ -101,6 +101,7 @@ reproducibility is paramount, such as build tools.
     * [Return statements](#return-statements)
     * [Expression statements](#expression-statements)
     * [If statements](#if-statements)
+    * [While loops](#while-loops)
     * [For loops](#for-loops)
     * [Break and Continue](#break-and-continue)
     * [Load statements](#load-statements)
@@ -2900,6 +2901,14 @@ A `while` statement at top level results in a static error.
 <b>Implementation note:</b>
 The Go implementation of Starlark permits `while` loops only if the `-recursion` flag is enabled.
 A `while` statement is permitted at top level if the `-globalreassign` flag is enabled.
+
+Setting of flags programmatically is done via EvalExprOptions, EvalOptions, ExecFileOptions functions with use of syntax.FileOptions struct. 
+
+* `While` set to `True` enables `while` loops.
+
+* `TopLevelControl` set to `True` enables `while` loops to be used outside of functions.
+
+* `GlobalReassign` set to `True` is needed if you will use global variable (as counter or such).
 
 
 ### For loops
